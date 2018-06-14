@@ -7,29 +7,29 @@ import java.util.HashMap;
 
 public class TaxCalculator {
 
-    public char umowa = ' ';
     // składki na ubezpieczenia społeczne
-    public double s_emerytalna = 0; // 9,76% podstawyy
-    public double s_rentowa = 0; // 1,5% podstawy
-    public double u_chorobowe = 0; // 2,45% podstawy
+    private double SkladkaEmerytalna = 0; // 9,76% podstawyy
+    private double SkladkaRentowa = 0; // 1,5% podstawy
+    private double UbezpChorobowe = 0; // 2,45% podstawy
     // składki na ubezpieczenia zdrowotne
-    public double kosztyUzyskania = 111.25;
-    public double s_zdrow1 = 0; // od podstawy wymiaru 9%
-    public double s_zdrow2 = 0; // od podstawy wymiaru 7,75 %
-    public double zaliczkaNaPod = 0; // zaliczka na podatek dochodowy 18%
-    public double kwotaZmiejsz = 46.33; // kwota zmienjszająca podatek 46,33 PLN
-    public double zaliczkaUS = 0;
-    public double zaliczkaUSZaokr = 0;
-    public double oPodstawa = 0;
-    double podstawaOpodat = 0;
-    double podstawaOpodatZaokr = 0;
-    double podatekPotracony = 0;
-    double wynagrodzenie = 0;
+    private double kosztyUzyskania = 111.25;
+    private double SkladkaZdrowotna1 = 0; // od podstawy wymiaru 9%
+    private double SkladkaZdrowotna2 = 0; // od podstawy wymiaru 7,75 %
+    private double zaliczkaNaPodatekDochodowy = 0; // zaliczka na podatek dochodowy 18%
+    private double kwotaZmiejszajacaPodatek = 46.33; // kwota zmienjszająca podatek 46,33 PLN
+    private double zaliczkaUS = 0;
+    private double zaliczkaUSZaokr = 0;
+    private double oPodstawa = 0;
+    private double podstawaOpodat = 0;
+    private double podstawaOpodatZaokr = 0;
+    private double podatekPotracony = 0;
+    private double wynagrodzenie = 0;
     DecimalFormat df00 = new DecimalFormat("#.00");
     DecimalFormat df = new DecimalFormat("#");
 
     public void run() {
         Double podstawa = 0.0;
+        char umowa;
         try {
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
@@ -59,30 +59,30 @@ public class TaxCalculator {
         System.out.println("Podstawa wymiaru składek " + podstawa);
         oPodstawa = obliczonaPodstawa(podstawa);
         System.out.println("Składka na ubezpieczenie emerytalne "
-                + df00.format(s_emerytalna));
+                + df00.format(SkladkaEmerytalna));
         System.out.println("Składka na ubezpieczenie rentowe    "
-                + df00.format(s_rentowa));
+                + df00.format(SkladkaRentowa));
         System.out.println("Składka na ubezpieczenie chorobowe  "
-                + df00.format(u_chorobowe));
+                + df00.format(UbezpChorobowe));
         System.out
                 .println("Podstawa wymiaru składki na ubezpieczenie zdrowotne: "
                         + oPodstawa);
         obliczUbezpieczenia(oPodstawa);
         System.out.println("Składka na ubezpieczenie zdrowotne: 9% = "
-                + df00.format(s_zdrow1) + " 7,75% = " + df00.format(s_zdrow2));
+                + df00.format(SkladkaZdrowotna1) + " 7,75% = " + df00.format(SkladkaZdrowotna2));
     }
 
     private void obliczUZ(Double podstawa) {
         wypiszSkladki(podstawa);
-        kwotaZmiejsz = 0;
+        kwotaZmiejszajacaPodatek = 0;
         kosztyUzyskania = (oPodstawa * 20) / 100;
         podstawaOpodat = oPodstawa - kosztyUzyskania;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
-        zaliczkaNaPod = obliczPodatek(podstawaOpodatZaokr);
-        podatekPotracony = zaliczkaNaPod;
+        zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
+        podatekPotracony = zaliczkaNaPodatekDochodowy;
         zaliczkaUS = obliczZaliczke();
         zaliczkaUSZaokr = Double.parseDouble(df.format(zaliczkaUS));
-        wynagrodzenie = podstawa - ((s_emerytalna + s_rentowa + u_chorobowe) + s_zdrow1 + zaliczkaUSZaokr);
+        wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
 
         wypiszUZ();
     }
@@ -94,15 +94,15 @@ public class TaxCalculator {
         skladowePlacy.put("PodstawaOpodatkowania", podstawaOpodat);
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
         skladowePlacy.put("PodstawaOpodatkowaniaZaokraglona", podstawaOpodatZaokr);
-        zaliczkaNaPod = obliczPodatek(podstawaOpodatZaokr);
-        skladowePlacy.put("ZaliczkaNaPodatek", zaliczkaNaPod);
-        podatekPotracony = zaliczkaNaPod - kwotaZmiejsz;
+        zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
+        skladowePlacy.put("ZaliczkaNaPodatek", zaliczkaNaPodatekDochodowy);
+        podatekPotracony = zaliczkaNaPodatekDochodowy - kwotaZmiejszajacaPodatek;
         skladowePlacy.put("PodatekPotracony", podatekPotracony);
         zaliczkaUS = obliczZaliczke();
         skladowePlacy.put("ZaliczkaUS", zaliczkaUS);
         zaliczkaUSZaokr = Double.parseDouble(df.format(zaliczkaUS));
         skladowePlacy.put("ZaliczkaUSZaokraglona", zaliczkaUSZaokr);
-        wynagrodzenie = podstawa - ((s_emerytalna + s_rentowa + u_chorobowe) + s_zdrow1 + zaliczkaUSZaokr);
+        wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
 
         wypiszUoP(podstawa);
     }
@@ -114,8 +114,8 @@ public class TaxCalculator {
         System.out.println("Podstawa opodatkowania " + podstawaOpodat
                 + " zaokrąglona " + df.format(podstawaOpodatZaokr));
         System.out.println("Zaliczka na podatek dochodowy 18 % = "
-                + zaliczkaNaPod);
-        System.out.println("Kwota wolna od podatku = " + kwotaZmiejsz);
+                + zaliczkaNaPodatekDochodowy);
+        System.out.println("Kwota wolna od podatku = " + kwotaZmiejszajacaPodatek);
         System.out.println("Podatek potrącony = "
                 + df00.format(podatekPotracony));
         System.out.println("Zaliczka do urzędu skarbowego = "
@@ -134,7 +134,7 @@ public class TaxCalculator {
         System.out.println("Podstawa opodatkowania " + podstawaOpodat
                 + " zaokrąglona " + df.format(podstawaOpodatZaokr));
         System.out.println("Zaliczka na podatek dochodowy 18 % = "
-                + zaliczkaNaPod);
+                + zaliczkaNaPodatekDochodowy);
         System.out.println("Podatek potrącony = "
                 + df00.format(podatekPotracony));
         System.out.println("Zaliczka do urzędu skarbowego = "
@@ -147,7 +147,7 @@ public class TaxCalculator {
     }
 
     public Double obliczZaliczke() {
-        return zaliczkaNaPod - s_zdrow2 - kwotaZmiejsz;
+        return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2 - kwotaZmiejszajacaPodatek;
     }
 
     public Double obliczPodatek(double podstawa) {
@@ -155,14 +155,14 @@ public class TaxCalculator {
     }
 
     public double obliczonaPodstawa(double podstawa) {
-        s_emerytalna = (podstawa * 9.76) / 100;
-        s_rentowa = (podstawa * 1.5) / 100;
-        u_chorobowe = (podstawa * 2.45) / 100;
-        return (podstawa - s_emerytalna - s_rentowa - u_chorobowe);
+        SkladkaEmerytalna = (podstawa * 9.76) / 100;
+        SkladkaRentowa = (podstawa * 1.5) / 100;
+        UbezpChorobowe = (podstawa * 2.45) / 100;
+        return (podstawa - SkladkaEmerytalna - SkladkaRentowa - UbezpChorobowe);
     }
 
     public void obliczUbezpieczenia(double podstawa) {
-        s_zdrow1 = (podstawa * 9) / 100;
-        s_zdrow2 = (podstawa * 7.75) / 100;
+        SkladkaZdrowotna1 = (podstawa * 9) / 100;
+        SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
 }
