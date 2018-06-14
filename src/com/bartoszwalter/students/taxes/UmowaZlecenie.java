@@ -16,7 +16,6 @@ public class UmowaZlecenie extends Umowa {
     public void obliczKoszty(double podstawa) {
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
-        kwotaZmiejszajacaPodatek = 0;
         kosztyUzyskania = (oPodstawa * 20) / 100;
         podstawaOpodat = oPodstawa - kosztyUzyskania;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
@@ -50,6 +49,6 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public double obliczZaliczke() {
-        return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2 - kwotaZmiejszajacaPodatek;
+        return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2;
     }
 }
