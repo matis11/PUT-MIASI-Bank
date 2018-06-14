@@ -50,6 +50,6 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public double obliczZaliczke() {
-        return 0.0;
+        return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2 - kwotaZmiejszajacaPodatek;
     }
 }
