@@ -47,9 +47,19 @@ public class TaxCalculator {
         }
 
         if (umowa == 'P') {
-            obliczUOP(podstawa);
+           // obliczUOP(podstawa);
+
+            UmowaOPrace umowaObj = new UmowaOPrace(podstawa);
+            umowaObj.obliczKoszty();
+            umowaObj.wypiszKoszty();
+
+
         } else if (umowa == 'Z') {
-            obliczUZ(podstawa);
+            //obliczUZ(podstawa);
+
+            UmowaZlecenie umowaObj = new UmowaZlecenie(podstawa);
+            umowaObj.obliczKoszty();
+            umowaObj.wypiszKoszty();
         } else {
             System.out.println("Nieznany typ umowy!");
         }
