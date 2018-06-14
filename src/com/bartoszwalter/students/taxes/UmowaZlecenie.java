@@ -19,7 +19,8 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public void obliczKoszty() {
-        obliczUbezpieczenia(podstawa);
+        oPodstawa = obliczonaPodstawa(podstawa);
+        obliczUbezpieczenia(oPodstawa);
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
         kosztyUzyskania = (oPodstawa * 20) / 100;
