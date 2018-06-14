@@ -55,11 +55,11 @@ public class TaxCalculator {
 
 
         } else if (umowa == 'Z') {
-            //obliczUZ(podstawa);
-
+            obliczUZ(podstawa);
+/*
             UmowaZlecenie umowaObj = new UmowaZlecenie(podstawa);
             umowaObj.obliczKoszty();
-            umowaObj.wypiszKoszty();
+            umowaObj.wypiszKoszty();*/
         } else {
             System.out.println("Nieznany typ umowy!");
         }
@@ -78,8 +78,8 @@ public class TaxCalculator {
                 .println("Podstawa wymiaru składki na ubezpieczenie zdrowotne: "
                         + oPodstawa);
         obliczUbezpieczenia(oPodstawa);
-        System.out.println("Składka na ubezpieczenie zdrowotne: 9% = "
-                + df00.format(SkladkaZdrowotna1) + " 7,75% = " + df00.format(SkladkaZdrowotna2));
+      /*  System.out.println("Składka na ubezpieczenie zdrowotne: 9% = "
+                + df00.format(SkladkaZdrowotna1) + " 7,75% = " + df00.format(SkladkaZdrowotna2));*/
     }
 
     private void obliczUZ(Double podstawa) {

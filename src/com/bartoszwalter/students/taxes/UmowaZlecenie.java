@@ -8,6 +8,7 @@ public class UmowaZlecenie extends Umowa {
     private double zaliczkaUSZaokr = 0;
     private double podstawaOpodat = 0;
     private double podstawaOpodatZaokr = 0;
+    private double SkladkaZdrowotna2 = 0;
     private double podatekPotracony = 0;
     private double wynagrodzenie = 0;
     private double kosztyUzyskania = 111.25; //przeniesc do umowa
@@ -18,6 +19,7 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public void obliczKoszty() {
+        obliczUbezpieczenia(podstawa);
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
         kosztyUzyskania = (oPodstawa * 20) / 100;
@@ -28,6 +30,7 @@ public class UmowaZlecenie extends Umowa {
         zaliczkaUS = obliczZaliczke();
         zaliczkaUSZaokr = Double.parseDouble(df.format(zaliczkaUS));
         wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
+
     }
 
     public void wypiszKoszty() {
@@ -54,6 +57,12 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public double obliczZaliczke() {
+        kwotaZmiejszajacaPodatek = 0;
         return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2 - kwotaZmiejszajacaPodatek;
+    }
+
+    public void obliczUbezpieczenia(double podstawa) {
+        SkladkaZdrowotna1 = (podstawa * 9) / 100;
+        SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
 }

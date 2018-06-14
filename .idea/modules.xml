@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/example-taxes.iml" filepath="$PROJECT_DIR$/example-taxes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/put-miasi-tax.iml" filepath="$PROJECT_DIR$/put-miasi-tax.iml" />
     </modules>
   </component>
 </project>
