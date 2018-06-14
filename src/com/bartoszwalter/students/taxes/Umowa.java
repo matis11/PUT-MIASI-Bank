@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public abstract class Umowa {
     public abstract void obliczKoszty(double podstawa);
-    public abstract void wypiszKoszty();
+    public abstract void wypiszKoszty(double podstawa);
     public abstract double obliczZaliczke();
 
     public double SkladkaEmerytalna = 0; // 9,76% podstawyy
@@ -28,7 +28,7 @@ public abstract class Umowa {
         SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
 
-    private void wypiszSkladki(Double podstawa) {
+    public void wypiszSkladki(Double podstawa) {
         DecimalFormat df00 = new DecimalFormat("#.00");
         DecimalFormat df = new DecimalFormat("#");
 
