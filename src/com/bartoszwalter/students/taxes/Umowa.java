@@ -4,8 +4,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public abstract class Umowa {
-    public abstract void obliczKoszty(double podstawa);
-    public abstract void wypiszKoszty(double podstawa);
+    public abstract void obliczKoszty();
+    public abstract void wypiszKoszty();
     public abstract double obliczZaliczke();
 
     public double SkladkaEmerytalna = 0; // 9,76% podstawyy
@@ -15,7 +15,7 @@ public abstract class Umowa {
     public double SkladkaZdrowotna2 = 0; // od podstawy wymiaru 7,75 %
     public double oPodstawa = 0;
     public double kwotaZmiejszajacaPodatek = 46.33; // kwota zmienjszająca podatek 46,33 PLN
-
+    public double podstawa;
     public double obliczonaPodstawa(double podstawa) {
         SkladkaEmerytalna = (podstawa * 9.76) / 100;
         SkladkaRentowa = (podstawa * 1.5) / 100;
@@ -23,12 +23,16 @@ public abstract class Umowa {
         return (podstawa - SkladkaEmerytalna - SkladkaRentowa - UbezpChorobowe);
     }
 
-    public void obliczUbezpieczenia(double podstawa) {
+    public Umowa(double podstawa) {
+        this.podstawa = podstawa;
+    }
+
+    public void obliczUbezpieczenia() {
         SkladkaZdrowotna1 = (podstawa * 9) / 100;
         SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
 
-    public void wypiszSkladki(Double podstawa) {
+    public void wypiszSkladki() {
         DecimalFormat df00 = new DecimalFormat("#.00");
         DecimalFormat df = new DecimalFormat("#");
 
