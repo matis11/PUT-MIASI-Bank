@@ -18,6 +18,8 @@ public class UmowaOPrace extends Umowa {
     }
 
     public void obliczKoszty() {
+        oPodstawa = obliczonaPodstawa(podstawa);
+        obliczUbezpieczenia(oPodstawa);
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
         podstawaOpodat = oPodstawa - kosztyUzyskania;
@@ -51,5 +53,10 @@ public class UmowaOPrace extends Umowa {
 
     public double obliczZaliczke() {
             return zaliczkaNaPodatekDochodowy - SkladkaZdrowotna2 - kwotaZmiejszajacaPodatek;
+    }
+
+    public void obliczUbezpieczenia(double podstawa) {
+        SkladkaZdrowotna1 = (podstawa * 9) / 100;
+        SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
 }

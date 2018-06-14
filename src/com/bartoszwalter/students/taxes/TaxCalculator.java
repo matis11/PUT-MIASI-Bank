@@ -103,7 +103,7 @@ public class TaxCalculator {
         wypiszUZ();
     }
 
-    private void obliczUOP(Double podstawa) {
+    public void obliczUOP(Double podstawa) {
         wypiszSkladki(podstawa);
         podstawaOpodat = oPodstawa - kosztyUzyskania;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
