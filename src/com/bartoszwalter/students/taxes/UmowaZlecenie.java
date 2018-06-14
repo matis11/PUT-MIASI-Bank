@@ -13,7 +13,11 @@ public class UmowaZlecenie extends Umowa {
     private double kosztyUzyskania = 111.25; //przeniesc do umowa
     private double zaliczkaNaPodatekDochodowy = 0; // przeniesc do umowa
 
-    public void obliczKoszty(double podstawa) {
+    public UmowaZlecenie(double podstawa) {
+        super(podstawa);
+    }
+
+    public void obliczKoszty() {
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
         kosztyUzyskania = (oPodstawa * 20) / 100;
@@ -26,8 +30,8 @@ public class UmowaZlecenie extends Umowa {
         wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
     }
 
-    public void wypiszKoszty(double podstawa) {
-        wypiszSkladki(podstawa);
+    public void wypiszKoszty() {
+        wypiszSkladki();
         DecimalFormat df00 = new DecimalFormat("#.00");
         DecimalFormat df = new DecimalFormat("#");
         System.out.println("UMOWA-ZLECENIE");

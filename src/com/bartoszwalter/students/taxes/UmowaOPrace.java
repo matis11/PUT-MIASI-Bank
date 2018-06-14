@@ -14,7 +14,11 @@ public class UmowaOPrace extends Umowa {
     private double kosztyUzyskania = 111.25;
     DecimalFormat df = new DecimalFormat("#");
 
-    public void obliczKoszty(double podstawa) {
+    public UmowaOPrace(double podstawa) {
+        super(podstawa);
+    }
+
+    public void obliczKoszty() {
         podstawaOpodat = oPodstawa - 111.25;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
         zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
@@ -24,7 +28,7 @@ public class UmowaOPrace extends Umowa {
         wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
     }
 
-    public void wypiszKoszty(double podstawa) {
+    public void wypiszKoszty() {
         DecimalFormat df00 = new DecimalFormat("#.00");
         System.out.println("UMOWA O PRACĘ");
         System.out.println("Koszty uzyskania przychodu w stałej wysokości " + kosztyUzyskania);

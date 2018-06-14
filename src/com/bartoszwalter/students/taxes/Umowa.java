@@ -27,7 +27,7 @@ public abstract class Umowa {
         this.podstawa = podstawa;
     }
 
-    public void obliczUbezpieczenia() {
+    public void obliczUbezpieczenia(double podstawa) {
         SkladkaZdrowotna1 = (podstawa * 9) / 100;
         SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
     }
