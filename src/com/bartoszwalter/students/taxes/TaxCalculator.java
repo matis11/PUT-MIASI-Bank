@@ -47,7 +47,7 @@ public class TaxCalculator {
         }
 
         if (umowa == 'P') {
-           // obliczUOP(podstawa);
+            obliczUOP(podstawa);
 
             UmowaOPrace umowaObj = new UmowaOPrace(podstawa);
             umowaObj.obliczKoszty();
