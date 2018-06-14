@@ -31,10 +31,11 @@ public class UmowaZlecenie extends Umowa {
     }
 
     public void wypiszKoszty() {
-        wypiszSkladki();
         DecimalFormat df00 = new DecimalFormat("#.00");
         DecimalFormat df = new DecimalFormat("#");
+
         System.out.println("UMOWA-ZLECENIE");
+        wypiszSkladki();
         System.out.println("Koszty uzyskania przychodu (stałe) "
                 + kosztyUzyskania);
         System.out.println("Podstawa opodatkowania " + podstawaOpodat

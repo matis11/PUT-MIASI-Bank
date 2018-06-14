@@ -12,13 +12,13 @@ public class UmowaOPrace extends Umowa {
     private double podatekPotracony = 0;
     private double wynagrodzenie = 0;
     private double kosztyUzyskania = 111.25;
-    DecimalFormat df = new DecimalFormat("#");
 
     public UmowaOPrace(double podstawa) {
         super(podstawa);
     }
 
     public void obliczKoszty() {
+        DecimalFormat df = new DecimalFormat("#");
         podstawaOpodat = oPodstawa - 111.25;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
         zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
@@ -30,7 +30,10 @@ public class UmowaOPrace extends Umowa {
 
     public void wypiszKoszty() {
         DecimalFormat df00 = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#");
+
         System.out.println("UMOWA O PRACĘ");
+        wypiszSkladki();
         System.out.println("Koszty uzyskania przychodu w stałej wysokości " + kosztyUzyskania);
         System.out.println("Podstawa opodatkowania " + podstawaOpodat
                 + " zaokrąglona " + df.format(podstawaOpodatZaokr));
