@@ -88,20 +88,13 @@ public class TaxCalculator {
     }
 
     private void obliczUOP(Double podstawa) {
-        HashMap<String, Double> skladowePlacy = new HashMap<>();
         wypiszSkladki(podstawa);
         podstawaOpodat = oPodstawa - kosztyUzyskania;
-        skladowePlacy.put("PodstawaOpodatkowania", podstawaOpodat);
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
-        skladowePlacy.put("PodstawaOpodatkowaniaZaokraglona", podstawaOpodatZaokr);
         zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
-        skladowePlacy.put("ZaliczkaNaPodatek", zaliczkaNaPodatekDochodowy);
         podatekPotracony = zaliczkaNaPodatekDochodowy - kwotaZmiejszajacaPodatek;
-        skladowePlacy.put("PodatekPotracony", podatekPotracony);
         zaliczkaUS = obliczZaliczke();
-        skladowePlacy.put("ZaliczkaUS", zaliczkaUS);
         zaliczkaUSZaokr = Double.parseDouble(df.format(zaliczkaUS));
-        skladowePlacy.put("ZaliczkaUSZaokraglona", zaliczkaUSZaokr);
         wynagrodzenie = podstawa - ((SkladkaEmerytalna + SkladkaRentowa + UbezpChorobowe) + SkladkaZdrowotna1 + zaliczkaUSZaokr);
 
         wypiszUoP(podstawa);
