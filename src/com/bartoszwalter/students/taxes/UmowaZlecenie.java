@@ -16,7 +16,8 @@ public class UmowaZlecenie extends Umowa {
     public void obliczKoszty(double podstawa) {
         DecimalFormat df = new DecimalFormat("#");
         oPodstawa = obliczonaPodstawa(podstawa);
-        podstawaOpodat = oPodstawa - (oPodstawa * 20) / 100;
+        kosztyUzyskania = (oPodstawa * 20) / 100;
+        podstawaOpodat = oPodstawa - kosztyUzyskania;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
         zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
         podatekPotracony = zaliczkaNaPodatekDochodowy;
