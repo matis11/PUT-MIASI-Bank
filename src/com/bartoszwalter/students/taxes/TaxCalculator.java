@@ -27,9 +27,11 @@ public class TaxCalculator {
     DecimalFormat df00 = new DecimalFormat("#.00");
     DecimalFormat df = new DecimalFormat("#");
 
+
     public void run() {
+        Factory factory = new Factory();
         Double podstawa = 0.0;
-        char umowa;
+        char typ;
         try {
             InputStreamReader isr = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(isr);
@@ -38,7 +40,7 @@ public class TaxCalculator {
             podstawa = Double.parseDouble(br.readLine());
 
             System.out.print("Typ umowy: (P)raca, (Z)lecenie: ");
-            umowa = br.readLine().charAt(0);
+            typ = br.readLine().charAt(0);
 
         } catch (Exception ex) {
             System.out.println("Błędna kwota");
@@ -46,23 +48,27 @@ public class TaxCalculator {
             return;
         }
 
-        if (umowa == 'P') {
-            obliczUOP(podstawa);
-
-            UmowaOPrace umowaObj = new UmowaOPrace(podstawa);
-            umowaObj.obliczKoszty();
-            umowaObj.wypiszKoszty();
-
-
-        } else if (umowa == 'Z') {
-            //obliczUZ(podstawa);
-
-            UmowaZlecenie umowaObj = new UmowaZlecenie(podstawa);
-            umowaObj.obliczKoszty();
-            umowaObj.wypiszKoszty();
-        } else {
-            System.out.println("Nieznany typ umowy!");
-        }
+        String typString = "" + typ;
+        Umowa umowa = factory.stworzUmowe(typString, podstawa);
+        umowa.obliczKoszty();
+        umowa.wypiszKoszty();
+//        if (umowa == 'P') {
+//            obliczUOP(podstawa);
+//
+//            UmowaOPrace umowaObj = new UmowaOPrace(podstawa);
+//            umowaObj.obliczKoszty();
+//            umowaObj.wypiszKoszty();
+//
+//
+//        } else if (umowa == 'Z') {
+//            //obliczUZ(podstawa);
+//
+//            UmowaZlecenie umowaObj = new UmowaZlecenie(podstawa);
+//            umowaObj.obliczKoszty();
+//            umowaObj.wypiszKoszty();
+//        } else {
+//            System.out.println("Nieznany typ umowy!");
+//        }
     }
 
     private void wypiszSkladki(Double podstawa) {
