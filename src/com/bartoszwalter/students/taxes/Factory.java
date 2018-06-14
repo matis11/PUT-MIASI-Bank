@@ -5,13 +5,8 @@ public class Factory {
         Umowa umowa = null;
         if (type.equals("Z")) {
             umowa = new UmowaZlecenie(podstawa);
-
-
         } else if (type.equals("P")) {
-            //umowa = new UmowaOPrace(podstawa);
-            TaxCalculator tax = new TaxCalculator();
-            tax.obliczUOP(podstawa);
-
+            umowa = new UmowaOPrace(podstawa);
         }
         return umowa;
     }

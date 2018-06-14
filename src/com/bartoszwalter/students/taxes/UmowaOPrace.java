@@ -21,7 +21,6 @@ public class UmowaOPrace extends Umowa {
         oPodstawa = obliczonaPodstawa(podstawa);
         obliczUbezpieczenia(oPodstawa);
         DecimalFormat df = new DecimalFormat("#");
-        oPodstawa = obliczonaPodstawa(podstawa);
         podstawaOpodat = oPodstawa - kosztyUzyskania;
         podstawaOpodatZaokr = Double.parseDouble(df.format(podstawaOpodat));
         zaliczkaNaPodatekDochodowy = obliczPodatek(podstawaOpodatZaokr);
