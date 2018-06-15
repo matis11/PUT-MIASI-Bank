@@ -114,8 +114,7 @@ public class TaxCalculator {
                 + formatZDwomaZerami.format(zaliczkaUS) + " po zaokrągleniu = "
                 + formatBezZer.format(zaliczkaUSZaokr));
         System.out.println();
-        System.out.println("Pracownik otrzyma wynagrodzenie netto w wysokości = "
-                + formatZDwomaZerami.format(wynagrodzenie));
+        System.out.println("Pracownik otrzyma wynagrodzenie netto w wysokości = " + formatZDwomaZerami.format(wynagrodzenie));
     }
 
     private void wypiszUZ() {
@@ -128,8 +127,7 @@ public class TaxCalculator {
                 + formatZDwomaZerami.format(zaliczkaUS) + " po zaokrągleniu = "
                 + formatBezZer.format(zaliczkaUSZaokr));
         System.out.println();
-        System.out.println("Pracownik otrzyma wynagrodzenie netto w wysokości = "
-                + formatZDwomaZerami.format(wynagrodzenie));
+        System.out.println("Pracownik otrzyma wynagrodzenie netto w wysokości = " + formatZDwomaZerami.format(wynagrodzenie));
     }
 
     private Double obliczZaliczke() {
@@ -144,6 +142,7 @@ public class TaxCalculator {
         skladkaEmerytalna = procentZCalosci(PROCENTY_SKLADKA_EMERYTALNA, podstawa);
         skladkaRentowa = procentZCalosci(PROCENTY_SKLADKA_RENTOWA, podstawa);
         ubezpChorobowe = procentZCalosci(PROCENTY_SKLADKA_UBEZP_CHOROBOWE, podstawa);
+
         return (podstawa - skladkaEmerytalna - skladkaRentowa - ubezpChorobowe);
     }
 
