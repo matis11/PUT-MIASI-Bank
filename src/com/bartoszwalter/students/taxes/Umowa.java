@@ -1,11 +1,12 @@
 package com.bartoszwalter.students.taxes;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
 
 public abstract class Umowa {
     public abstract void obliczKoszty();
+
     public abstract void wypiszKoszty();
+
     public abstract double obliczZaliczke();
 
     public double SkladkaEmerytalna = 0; // 9,76% podstawyy
@@ -16,6 +17,10 @@ public abstract class Umowa {
     public double oPodstawa = 0;
     public double kwotaZmiejszajacaPodatek = 46.33; // kwota zmienjszająca podatek 46,33 PLN
     public double podstawa;
+    public double wynagrodzenie = 0;
+    public double kosztyUzyskania = 111.25;
+    public double zaliczkaNaPodatekDochodowy = 0;
+
     public double obliczonaPodstawa(double podstawa) {
         SkladkaEmerytalna = (podstawa * 9.76) / 100;
         SkladkaRentowa = (podstawa * 1.5) / 100;
@@ -37,16 +42,10 @@ public abstract class Umowa {
         DecimalFormat df = new DecimalFormat("#");
 
         System.out.println("Podstawa wymiaru składek " + podstawa);
-//        oPodstawa = obliczPodstawe(podstawa); //moved to UmowaOPrace -> obliczKoszty
-        System.out.println("Składka na ubezpieczenie emerytalne "
-                + df00.format(SkladkaEmerytalna));
-        System.out.println("Składka na ubezpieczenie rentowe    "
-                + df00.format(SkladkaRentowa));
-        System.out.println("Składka na ubezpieczenie chorobowe  "
-                + df00.format(UbezpChorobowe));
-        System.out
-                .println("Podstawa wymiaru składki na ubezpieczenie zdrowotne: "
-                        + oPodstawa);
+        System.out.println("Składka na ubezpieczenie emerytalne " + df00.format(SkladkaEmerytalna));
+        System.out.println("Składka na ubezpieczenie rentowe    " + df00.format(SkladkaRentowa));
+        System.out.println("Składka na ubezpieczenie chorobowe  " + df00.format(UbezpChorobowe));
+        System.out.println("Podstawa wymiaru składki na ubezpieczenie zdrowotne: " + oPodstawa);
         obliczUbezpieczenia(oPodstawa);
         System.out.println("Składka na ubezpieczenie zdrowotne: 9% = "
                 + df00.format(SkladkaZdrowotna1) + " 7,75% = " + df00.format(SkladkaZdrowotna2));
