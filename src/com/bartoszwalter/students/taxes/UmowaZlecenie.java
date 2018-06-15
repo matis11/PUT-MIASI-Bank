@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class UmowaZlecenie extends Umowa {
+    public static String symbol = "Z";
     private double zaliczkaUS = 0;
     private double zaliczkaUSZaokr = 0;
     private double podstawaOpodat = 0;

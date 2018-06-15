@@ -37,7 +37,7 @@ public abstract class Umowa {
         DecimalFormat df = new DecimalFormat("#");
 
         System.out.println("Podstawa wymiaru składek " + podstawa);
-//        oPodstawa = obliczonaPodstawa(podstawa); //moved to UmowaOPrace -> obliczKoszty
+//        oPodstawa = obliczPodstawe(podstawa); //moved to UmowaOPrace -> obliczKoszty
         System.out.println("Składka na ubezpieczenie emerytalne "
                 + df00.format(SkladkaEmerytalna));
         System.out.println("Składka na ubezpieczenie rentowe    "

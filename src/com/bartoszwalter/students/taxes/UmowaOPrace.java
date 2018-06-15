@@ -3,6 +3,7 @@ package com.bartoszwalter.students.taxes;
 import java.text.DecimalFormat;
 
 public class UmowaOPrace extends Umowa {
+    public static String symbol = "P";
     private double zaliczkaNaPodatekDochodowy = 0;
     private double zaliczkaUS = 0;
     private double zaliczkaUSZaokr = 0;
