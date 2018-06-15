@@ -6,7 +6,7 @@ import com.bartoszwalter.students.taxes.UmowaOPrace;
 import com.bartoszwalter.students.taxes.UmowaZlecenie;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FactoryTest {
 
@@ -19,7 +19,7 @@ public class FactoryTest {
     @Test
     public void stworzUmoweZlecenie() {
         final Factory factory = new Factory();
-        final Umowa umowa = factory.stworzUmowe("Z", podstawa);
+        final Umowa umowa = factory.stworzUmowe(typZlecenie, podstawa);
 
         assertEquals(umowaZlecenie, umowa);
     }
@@ -27,7 +27,7 @@ public class FactoryTest {
     @Test
     public void stworzUmoweOPrace() {
         final Factory factory = new Factory();
-        final Umowa umowa = factory.stworzUmowe("P", podstawa);
+        final Umowa umowa = factory.stworzUmowe(typOPrace, podstawa);
 
         assertEquals(umowaOPrace, umowa);
     }
