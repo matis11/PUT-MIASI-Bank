@@ -1,5 +1,9 @@
-package com.bartoszwalter.students.taxes;
+package com.bartoszwalter.students.taxes.test;
 
+import com.bartoszwalter.students.taxes.Factory;
+import com.bartoszwalter.students.taxes.Umowa;
+import com.bartoszwalter.students.taxes.UmowaOPrace;
+import com.bartoszwalter.students.taxes.UmowaZlecenie;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,5 +1,7 @@
-package com.bartoszwalter.students.taxes;
+package com.bartoszwalter.students.taxes.test;
 
+import com.bartoszwalter.students.taxes.UmowaOPrace;
+import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
