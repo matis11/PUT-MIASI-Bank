@@ -1,6 +1,7 @@
 package com.bartoszwalter.students.taxes;
 
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class UmowaOPrace extends Umowa {
     private double zaliczkaNaPodatekDochodowy = 0;
@@ -57,5 +58,27 @@ public class UmowaOPrace extends Umowa {
     public void obliczUbezpieczenia(double podstawa) {
         SkladkaZdrowotna1 = (podstawa * 9) / 100;
         SkladkaZdrowotna2 = (podstawa * 7.75) / 100;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UmowaOPrace that = (UmowaOPrace) o;
+        return Double.compare(that.zaliczkaNaPodatekDochodowy, zaliczkaNaPodatekDochodowy) == 0 &&
+                Double.compare(that.zaliczkaUS, zaliczkaUS) == 0 &&
+                Double.compare(that.zaliczkaUSZaokr, zaliczkaUSZaokr) == 0 &&
+                Double.compare(that.oPodstawa, oPodstawa) == 0 &&
+                Double.compare(that.podstawaOpodat, podstawaOpodat) == 0 &&
+                Double.compare(that.podstawaOpodatZaokr, podstawaOpodatZaokr) == 0 &&
+                Double.compare(that.podatekPotracony, podatekPotracony) == 0 &&
+                Double.compare(that.wynagrodzenie, wynagrodzenie) == 0 &&
+                Double.compare(that.kosztyUzyskania, kosztyUzyskania) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(zaliczkaNaPodatekDochodowy, zaliczkaUS, zaliczkaUSZaokr, oPodstawa, podstawaOpodat, podstawaOpodatZaokr, podatekPotracony, wynagrodzenie, kosztyUzyskania);
     }
 }
